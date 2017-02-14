@@ -1,13 +1,22 @@
 var app = require('../js/script.js');
 
-describe("app", function() {
-  it("should raise a to n", function() {
+var a = 2;
+var n = 4;
 
-  	var result;
-  	console.log("app", app);
 
-  	result = app.pow(0.1, 2);
+describe("checkNumber", function() {
+		it("проверяет а на целочисленность", function() {
+			var result = app.checkNumber(a);
+			expect(result).toBe(true);	
+		})
+	 })
 
-    expect(result).toBe('Error. Reload page and enter integer.');
-  });
-});
+describe("pow", function() {
+		it("возводит а в степень n", function() {
+			var result = app.pow(a, n);
+			expect(result).toBe(16);	
+		})
+	 })
+
+
+

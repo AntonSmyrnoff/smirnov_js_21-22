@@ -1,50 +1,41 @@
-/*var app = {
-  sayHello: function (name) {
-    return 'Hello, ' + name;
-  }
-};*/
-
-
 var app = {
-  pow: function (base, exp) {
-    if ( checkNumber(base) && checkNumber(exp) ) {
-      result = checkExponentSign(base, exp);
-      return ( 'Result: ', result );
-        } else {
-        return ('Error. Reload page and enter integer.');
-        }
-  }
-};
-
-function checkNumber(a) { //возвращает true, если аргументы - целые числа
-  return !isNaN( parseFloat(a) ) && isFinite(a) && parseInt(a) == a; 
-}
-
-
-function checkExponentSign(a, n) { //возвращает результат вовзведения числа "а" в степень "n" при n>0, n=0, n<0
-  var res = 1;  
-  
-  if (n >= 0) {
-      res = raise(a, n, res);
-  } else {
-      n = -n;
-      res = 1 / raise(a, n, res);
-    }
-
-  return res;
-}
-
-
-function raise(a, n, res) {
-  for (var i = 0; i < n; i++) {
+  pow: function(a, n) {
+    if ( this.checkNumber(a) && this.checkNumber(n) ) {
+    result = this.checkExponentSign(a, n);
+      console.log ( 'Result: ', a, '^', n, '=', result );
+      return result;
+  } else console.log ('Error. Reload page and enter integer.');
+    return ('error');
+  },
+  checkNumber: function(a) {
+    return !isNaN( parseFloat(a) ) && isFinite(a) && parseInt(a) == a; 
+  },
+  checkExponentSign: function (a,n) {
+    var res = 1;  
+    if (n >= 0) {
+        res = this.raise(a, n, res);
+    } else {
+        n = -n;
+        res = 1 / this.raise(a, n, res);
+      }
+    return res;
+  },
+  raise: function(a, n, res) {
+    for (var i = 0; i < n; i++) {
     res *= a;
+    }
+    return res;
   }
-  
-  return res;
-}    
+}
 
 app.pow();
-module.exports = app;
+
+
+try 
+{
+  module.exports = app;
+}
+catch (e) {}
 
 
 
